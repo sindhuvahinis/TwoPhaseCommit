@@ -157,10 +157,258 @@ func (m *Response) GetMessage() string {
 	return ""
 }
 
+type CanCommitResponse struct {
+	CanCommit            bool     `protobuf:"varint,1,opt,name=canCommit,proto3" json:"canCommit,omitempty"`
+	Message              string   `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CanCommitResponse) Reset()         { *m = CanCommitResponse{} }
+func (m *CanCommitResponse) String() string { return proto.CompactTextString(m) }
+func (*CanCommitResponse) ProtoMessage()    {}
+func (*CanCommitResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{3}
+}
+
+func (m *CanCommitResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CanCommitResponse.Unmarshal(m, b)
+}
+func (m *CanCommitResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CanCommitResponse.Marshal(b, m, deterministic)
+}
+func (m *CanCommitResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CanCommitResponse.Merge(m, src)
+}
+func (m *CanCommitResponse) XXX_Size() int {
+	return xxx_messageInfo_CanCommitResponse.Size(m)
+}
+func (m *CanCommitResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CanCommitResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CanCommitResponse proto.InternalMessageInfo
+
+func (m *CanCommitResponse) GetCanCommit() bool {
+	if m != nil {
+		return m.CanCommit
+	}
+	return false
+}
+
+func (m *CanCommitResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+type CommitRequest struct {
+	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value                string   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	Operation            string   `protobuf:"bytes,3,opt,name=operation,proto3" json:"operation,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CommitRequest) Reset()         { *m = CommitRequest{} }
+func (m *CommitRequest) String() string { return proto.CompactTextString(m) }
+func (*CommitRequest) ProtoMessage()    {}
+func (*CommitRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{4}
+}
+
+func (m *CommitRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommitRequest.Unmarshal(m, b)
+}
+func (m *CommitRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommitRequest.Marshal(b, m, deterministic)
+}
+func (m *CommitRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommitRequest.Merge(m, src)
+}
+func (m *CommitRequest) XXX_Size() int {
+	return xxx_messageInfo_CommitRequest.Size(m)
+}
+func (m *CommitRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommitRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommitRequest proto.InternalMessageInfo
+
+func (m *CommitRequest) GetKey() string {
+	if m != nil {
+		return m.Key
+	}
+	return ""
+}
+
+func (m *CommitRequest) GetValue() string {
+	if m != nil {
+		return m.Value
+	}
+	return ""
+}
+
+func (m *CommitRequest) GetOperation() string {
+	if m != nil {
+		return m.Operation
+	}
+	return ""
+}
+
+type CommitACK struct {
+	IsCommitted              bool     `protobuf:"varint,1,opt,name=isCommitted,proto3" json:"isCommitted,omitempty"`
+	Message                  string   `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	OperationResponseCode    int32    `protobuf:"varint,3,opt,name=OperationResponseCode,proto3" json:"OperationResponseCode,omitempty"`
+	OperationResponseMessage string   `protobuf:"bytes,4,opt,name=OperationResponseMessage,proto3" json:"OperationResponseMessage,omitempty"`
+	XXX_NoUnkeyedLiteral     struct{} `json:"-"`
+	XXX_unrecognized         []byte   `json:"-"`
+	XXX_sizecache            int32    `json:"-"`
+}
+
+func (m *CommitACK) Reset()         { *m = CommitACK{} }
+func (m *CommitACK) String() string { return proto.CompactTextString(m) }
+func (*CommitACK) ProtoMessage()    {}
+func (*CommitACK) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{5}
+}
+
+func (m *CommitACK) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommitACK.Unmarshal(m, b)
+}
+func (m *CommitACK) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommitACK.Marshal(b, m, deterministic)
+}
+func (m *CommitACK) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommitACK.Merge(m, src)
+}
+func (m *CommitACK) XXX_Size() int {
+	return xxx_messageInfo_CommitACK.Size(m)
+}
+func (m *CommitACK) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommitACK.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommitACK proto.InternalMessageInfo
+
+func (m *CommitACK) GetIsCommitted() bool {
+	if m != nil {
+		return m.IsCommitted
+	}
+	return false
+}
+
+func (m *CommitACK) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+func (m *CommitACK) GetOperationResponseCode() int32 {
+	if m != nil {
+		return m.OperationResponseCode
+	}
+	return 0
+}
+
+func (m *CommitACK) GetOperationResponseMessage() string {
+	if m != nil {
+		return m.OperationResponseMessage
+	}
+	return ""
+}
+
+type Empty struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Empty) Reset()         { *m = Empty{} }
+func (m *Empty) String() string { return proto.CompactTextString(m) }
+func (*Empty) ProtoMessage()    {}
+func (*Empty) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{6}
+}
+
+func (m *Empty) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Empty.Unmarshal(m, b)
+}
+func (m *Empty) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Empty.Marshal(b, m, deterministic)
+}
+func (m *Empty) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Empty.Merge(m, src)
+}
+func (m *Empty) XXX_Size() int {
+	return xxx_messageInfo_Empty.Size(m)
+}
+func (m *Empty) XXX_DiscardUnknown() {
+	xxx_messageInfo_Empty.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Empty proto.InternalMessageInfo
+
+type AbortACK struct {
+	IsAborted            bool     `protobuf:"varint,1,opt,name=isAborted,proto3" json:"isAborted,omitempty"`
+	Message              string   `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AbortACK) Reset()         { *m = AbortACK{} }
+func (m *AbortACK) String() string { return proto.CompactTextString(m) }
+func (*AbortACK) ProtoMessage()    {}
+func (*AbortACK) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{7}
+}
+
+func (m *AbortACK) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AbortACK.Unmarshal(m, b)
+}
+func (m *AbortACK) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AbortACK.Marshal(b, m, deterministic)
+}
+func (m *AbortACK) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AbortACK.Merge(m, src)
+}
+func (m *AbortACK) XXX_Size() int {
+	return xxx_messageInfo_AbortACK.Size(m)
+}
+func (m *AbortACK) XXX_DiscardUnknown() {
+	xxx_messageInfo_AbortACK.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AbortACK proto.InternalMessageInfo
+
+func (m *AbortACK) GetIsAborted() bool {
+	if m != nil {
+		return m.IsAborted
+	}
+	return false
+}
+
+func (m *AbortACK) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*PutRequest)(nil), "proto.PutRequest")
 	proto.RegisterType((*GetAndDeleteRequest)(nil), "proto.GetAndDeleteRequest")
 	proto.RegisterType((*Response)(nil), "proto.Response")
+	proto.RegisterType((*CanCommitResponse)(nil), "proto.CanCommitResponse")
+	proto.RegisterType((*CommitRequest)(nil), "proto.CommitRequest")
+	proto.RegisterType((*CommitACK)(nil), "proto.commitACK")
+	proto.RegisterType((*Empty)(nil), "proto.Empty")
+	proto.RegisterType((*AbortACK)(nil), "proto.abortACK")
 }
 
 func init() {
@@ -168,21 +416,33 @@ func init() {
 }
 
 var fileDescriptor_a0b84a42fa06f626 = []byte{
-	// 222 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2d, 0x4e, 0x2d, 0x2a,
-	0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x53, 0x4a, 0x26, 0x5c,
-	0x5c, 0x01, 0xa5, 0x25, 0x41, 0xa9, 0x85, 0xa5, 0xa9, 0xc5, 0x25, 0x42, 0x02, 0x5c, 0xcc, 0xd9,
-	0xa9, 0x95, 0x12, 0x8c, 0x0a, 0x8c, 0x1a, 0x9c, 0x41, 0x20, 0xa6, 0x90, 0x08, 0x17, 0x6b, 0x59,
-	0x62, 0x4e, 0x69, 0xaa, 0x04, 0x13, 0x58, 0x0c, 0xc2, 0x51, 0x52, 0xe7, 0x12, 0x76, 0x4f, 0x2d,
-	0x71, 0xcc, 0x4b, 0x71, 0x49, 0xcd, 0x49, 0x2d, 0x49, 0xc5, 0xa9, 0x5d, 0xc9, 0x83, 0x8b, 0x23,
-	0x28, 0xb5, 0xb8, 0x20, 0x3f, 0xaf, 0x38, 0x55, 0x48, 0x89, 0x8b, 0xa7, 0x08, 0xca, 0x76, 0xce,
-	0x4f, 0x49, 0x05, 0x2b, 0x63, 0x0d, 0x42, 0x11, 0x13, 0x92, 0xe0, 0x62, 0xcf, 0x4d, 0x2d, 0x2e,
-	0x4e, 0x4c, 0x87, 0x59, 0x08, 0xe3, 0x1a, 0x6d, 0x62, 0xe4, 0x12, 0xf1, 0x4e, 0xad, 0x0c, 0x03,
-	0xd9, 0x1f, 0x5c, 0x92, 0x5f, 0x94, 0x1a, 0x0c, 0xf1, 0x8e, 0x90, 0x36, 0x17, 0x73, 0x40, 0x68,
-	0x88, 0x90, 0x20, 0xc4, 0x5f, 0x7a, 0x08, 0xdf, 0x48, 0xf1, 0x43, 0x85, 0x60, 0x2e, 0x50, 0x62,
-	0x10, 0x32, 0xe1, 0x62, 0x76, 0x77, 0x0d, 0x11, 0x92, 0x82, 0xca, 0x60, 0xf1, 0x04, 0x36, 0x5d,
-	0xe6, 0x5c, 0x6c, 0x2e, 0xae, 0x3e, 0xae, 0x21, 0xae, 0x24, 0x6a, 0x4c, 0x62, 0x03, 0x8b, 0x18,
-	0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0x6c, 0xdb, 0x7f, 0x10, 0x7c, 0x01, 0x00, 0x00,
+	// 405 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0xc1, 0x6a, 0xdb, 0x40,
+	0x10, 0x95, 0xa3, 0xca, 0xb1, 0xa6, 0x09, 0x4d, 0xa6, 0x2e, 0x08, 0x93, 0x43, 0xd8, 0x4b, 0x03,
+	0x85, 0x1c, 0x52, 0x43, 0x21, 0x37, 0x57, 0x11, 0x29, 0xb8, 0xa5, 0x46, 0xb6, 0x7b, 0x97, 0xed,
+	0xa1, 0x88, 0x5a, 0x5a, 0x55, 0xbb, 0x36, 0xf8, 0xd3, 0xfa, 0x0f, 0xfd, 0xa8, 0xa2, 0xd5, 0xae,
+	0xa4, 0x62, 0x29, 0xe0, 0x93, 0xb4, 0xef, 0xed, 0xbc, 0x79, 0x33, 0xfb, 0xe0, 0x52, 0x50, 0xbe,
+	0x8f, 0xd7, 0x74, 0x9f, 0xe5, 0x5c, 0x72, 0x74, 0xd4, 0x87, 0x8d, 0x01, 0x66, 0x3b, 0x19, 0xd2,
+	0xef, 0x1d, 0x09, 0x89, 0x57, 0x60, 0xff, 0xa2, 0x83, 0xd7, 0xbb, 0xed, 0xdd, 0xb9, 0x61, 0xf1,
+	0x8b, 0x43, 0x70, 0xf6, 0xd1, 0x76, 0x47, 0xde, 0x99, 0xc2, 0xca, 0x03, 0x7b, 0x0f, 0x6f, 0x9f,
+	0x49, 0x4e, 0xd2, 0xcd, 0x13, 0x6d, 0x49, 0x52, 0x67, 0x39, 0xfb, 0x02, 0x83, 0x90, 0x44, 0xc6,
+	0x53, 0x41, 0xc8, 0xe0, 0x22, 0xd7, 0xff, 0x3e, 0xdf, 0x90, 0xba, 0xe6, 0x84, 0xff, 0x61, 0xe8,
+	0xc1, 0x79, 0x42, 0x42, 0x44, 0x3f, 0x4d, 0x43, 0x73, 0x64, 0x53, 0xb8, 0xf6, 0xa3, 0xd4, 0xe7,
+	0x49, 0x12, 0xcb, 0x4a, 0xf2, 0x06, 0xdc, 0xb5, 0x01, 0x95, 0xde, 0x20, 0xac, 0x81, 0x17, 0xc4,
+	0x96, 0x70, 0x69, 0x94, 0x4e, 0x1a, 0xbc, 0x68, 0xc8, 0x33, 0xca, 0x23, 0x19, 0xf3, 0xd4, 0xb3,
+	0x15, 0x53, 0x03, 0xec, 0x4f, 0x0f, 0xdc, 0xb5, 0xd2, 0x9d, 0xf8, 0x53, 0xbc, 0x85, 0xd7, 0xb1,
+	0x28, 0xdb, 0x48, 0xda, 0x68, 0x7b, 0x4d, 0xa8, 0xdb, 0x20, 0x8e, 0xe1, 0xdd, 0x77, 0x23, 0x1b,
+	0x36, 0x97, 0x66, 0xab, 0xa5, 0xb5, 0x93, 0xf8, 0x08, 0xde, 0x11, 0xf1, 0x4d, 0x37, 0x78, 0xa5,
+	0x1a, 0x74, 0xf2, 0xec, 0x1c, 0x9c, 0x20, 0xc9, 0xe4, 0x81, 0x7d, 0x86, 0x41, 0xb4, 0xe2, 0xb9,
+	0x1a, 0xe1, 0x06, 0xdc, 0x58, 0x4c, 0x8a, 0x53, 0x35, 0x40, 0x0d, 0x74, 0xdb, 0x7f, 0xf8, 0x7b,
+	0x06, 0xc3, 0x29, 0x1d, 0x7e, 0x14, 0x3b, 0x9b, 0x4b, 0x9e, 0xd3, 0xbc, 0xcc, 0x1e, 0x7e, 0x00,
+	0x7b, 0xb6, 0x5c, 0xe0, 0x75, 0x19, 0xc2, 0xfb, 0x3a, 0x7a, 0xa3, 0x37, 0x1a, 0x32, 0xbe, 0x98,
+	0x85, 0x63, 0xb0, 0x9f, 0x83, 0x05, 0x8e, 0x34, 0xd3, 0x92, 0xb8, 0xb6, 0xaa, 0x4f, 0xd0, 0x7f,
+	0x0a, 0xbe, 0x06, 0x8b, 0xe0, 0xd4, 0xc2, 0xc7, 0x46, 0x98, 0xda, 0x1c, 0x7a, 0x1a, 0x3a, 0x8a,
+	0x21, 0xb3, 0xf0, 0x01, 0xfa, 0xe5, 0xc3, 0xe3, 0xd0, 0xdc, 0x6a, 0xe6, 0x6b, 0x74, 0xa5, 0xd1,
+	0x2a, 0x1d, 0xcc, 0xc2, 0x3b, 0x70, 0xd4, 0xa2, 0xf1, 0x42, 0x93, 0x6a, 0xff, 0x95, 0x33, 0xf3,
+	0x08, 0xcc, 0x5a, 0xf5, 0x15, 0xf2, 0xf1, 0x5f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xf2, 0xf2, 0x00,
+	0x91, 0xc3, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -200,6 +460,9 @@ type KeyValueStoreServiceClient interface {
 	PUT(ctx context.Context, in *PutRequest, opts ...grpc.CallOption) (*Response, error)
 	GET(ctx context.Context, in *GetAndDeleteRequest, opts ...grpc.CallOption) (*Response, error)
 	DELETE(ctx context.Context, in *GetAndDeleteRequest, opts ...grpc.CallOption) (*Response, error)
+	CanCommit(ctx context.Context, in *PutRequest, opts ...grpc.CallOption) (*CanCommitResponse, error)
+	Commit(ctx context.Context, in *CommitRequest, opts ...grpc.CallOption) (*CommitACK, error)
+	Abort(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*AbortACK, error)
 }
 
 type keyValueStoreServiceClient struct {
@@ -237,11 +500,41 @@ func (c *keyValueStoreServiceClient) DELETE(ctx context.Context, in *GetAndDelet
 	return out, nil
 }
 
+func (c *keyValueStoreServiceClient) CanCommit(ctx context.Context, in *PutRequest, opts ...grpc.CallOption) (*CanCommitResponse, error) {
+	out := new(CanCommitResponse)
+	err := c.cc.Invoke(ctx, "/proto.KeyValueStoreService/canCommit", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *keyValueStoreServiceClient) Commit(ctx context.Context, in *CommitRequest, opts ...grpc.CallOption) (*CommitACK, error) {
+	out := new(CommitACK)
+	err := c.cc.Invoke(ctx, "/proto.KeyValueStoreService/commit", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *keyValueStoreServiceClient) Abort(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*AbortACK, error) {
+	out := new(AbortACK)
+	err := c.cc.Invoke(ctx, "/proto.KeyValueStoreService/abort", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // KeyValueStoreServiceServer is the server API for KeyValueStoreService service.
 type KeyValueStoreServiceServer interface {
 	PUT(context.Context, *PutRequest) (*Response, error)
 	GET(context.Context, *GetAndDeleteRequest) (*Response, error)
 	DELETE(context.Context, *GetAndDeleteRequest) (*Response, error)
+	CanCommit(context.Context, *PutRequest) (*CanCommitResponse, error)
+	Commit(context.Context, *CommitRequest) (*CommitACK, error)
+	Abort(context.Context, *Empty) (*AbortACK, error)
 }
 
 // UnimplementedKeyValueStoreServiceServer can be embedded to have forward compatible implementations.
@@ -256,6 +549,15 @@ func (*UnimplementedKeyValueStoreServiceServer) GET(ctx context.Context, req *Ge
 }
 func (*UnimplementedKeyValueStoreServiceServer) DELETE(ctx context.Context, req *GetAndDeleteRequest) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DELETE not implemented")
+}
+func (*UnimplementedKeyValueStoreServiceServer) CanCommit(ctx context.Context, req *PutRequest) (*CanCommitResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CanCommit not implemented")
+}
+func (*UnimplementedKeyValueStoreServiceServer) Commit(ctx context.Context, req *CommitRequest) (*CommitACK, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Commit not implemented")
+}
+func (*UnimplementedKeyValueStoreServiceServer) Abort(ctx context.Context, req *Empty) (*AbortACK, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Abort not implemented")
 }
 
 func RegisterKeyValueStoreServiceServer(s *grpc.Server, srv KeyValueStoreServiceServer) {
@@ -316,6 +618,60 @@ func _KeyValueStoreService_DELETE_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _KeyValueStoreService_CanCommit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KeyValueStoreServiceServer).CanCommit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.KeyValueStoreService/CanCommit",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KeyValueStoreServiceServer).CanCommit(ctx, req.(*PutRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KeyValueStoreService_Commit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommitRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KeyValueStoreServiceServer).Commit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.KeyValueStoreService/Commit",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KeyValueStoreServiceServer).Commit(ctx, req.(*CommitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KeyValueStoreService_Abort_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KeyValueStoreServiceServer).Abort(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.KeyValueStoreService/Abort",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KeyValueStoreServiceServer).Abort(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _KeyValueStoreService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.KeyValueStoreService",
 	HandlerType: (*KeyValueStoreServiceServer)(nil),
@@ -331,6 +687,18 @@ var _KeyValueStoreService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DELETE",
 			Handler:    _KeyValueStoreService_DELETE_Handler,
+		},
+		{
+			MethodName: "canCommit",
+			Handler:    _KeyValueStoreService_CanCommit_Handler,
+		},
+		{
+			MethodName: "commit",
+			Handler:    _KeyValueStoreService_Commit_Handler,
+		},
+		{
+			MethodName: "abort",
+			Handler:    _KeyValueStoreService_Abort_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

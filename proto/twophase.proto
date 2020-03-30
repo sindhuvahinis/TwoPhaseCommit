@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;
+
+message TwoPhaseRequest {
+  string key = 1;
+  string value = 2;
+  string operation = 3;
+}
+
+message TwoPhaseResponse {
+  int32 OperationResponseCode = 3;
+  string OperationResponseMessage = 4;
+}
+
+message EmptyTwoPhase {
+}
+
+message JoinConnectionRequest {
+  int64 portNumber = 1;
+}
+
+service TwoPhaseService {
+  rpc initiateTwoPhaseProtocol(TwoPhaseRequest) returns (TwoPhaseResponse) {}
+  rpc joinConnection(JoinConnectionRequest) returns (EmptyTwoPhase) {}
+}

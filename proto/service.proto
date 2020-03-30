@@ -16,8 +16,39 @@ message Response {
     string message = 2;
 }
 
+message CanCommitResponse {
+    bool canCommit = 1;
+    string message = 2;
+}
+
+message CommitRequest {
+    string key = 1;
+    string value = 2;
+    string operation = 3;
+}
+
+message commitACK {
+    bool isCommitted = 1;
+    string message = 2;
+    int32 OperationResponseCode = 3;
+    string OperationResponseMessage = 4;
+}
+
+message Empty {
+
+}
+
+message abortACK {
+    bool isAborted = 1;
+    string message = 2;
+}
+
+
 service KeyValueStoreService {
     rpc PUT (PutRequest) returns (Response) {}
     rpc GET (GetAndDeleteRequest) returns (Response) {}
     rpc DELETE (GetAndDeleteRequest) returns (Response) {}
+    rpc canCommit(PutRequest) returns (CanCommitResponse) {}
+    rpc commit(CommitRequest) returns (commitACK) {}
+    rpc abort(Empty) returns (abortACK) {}
 }

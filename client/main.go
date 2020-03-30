@@ -9,6 +9,7 @@ import (
 	"google.golang.org/grpc/connectivity"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -34,9 +35,59 @@ func main() {
 	// Creating client to call the server's service
 	client := proto.NewKeyValueStoreServiceClient(connection)
 
+	// Putting 5 times
+
+	log.Printf("\nDoing PUT Operations 5 times...\n")
+	for i := 0; i < 5; i++ {
+		checkForConnection(connection)
+
+		key := "Key" + strconv.FormatInt(int64(i), 10)
+		value := "Value" + strconv.FormatInt(int64(i), 10)
+		response, err := client.PUT(context.Background(), &proto.PutRequest{Key: key, Value: value})
+
+		if err != nil {
+			log.Fatalf("Error occurred when calling PUT %v ", err)
+		}
+
+		log.Printf("Response is received from server "+
+			"\nResponse Code : %d , \nResponse Message : %s \n", response.ResponseCode, response.Message)
+	}
+
+	log.Printf("Doing GET Operations 5 times... \n")
+
+	for i := 0; i < 5; i++ {
+		checkForConnection(connection)
+		key := "Key" + strconv.FormatInt(int64(i), 10)
+		response, err := client.GET(context.Background(), &proto.GetAndDeleteRequest{Key: key})
+
+		if err != nil {
+			log.Fatalf("Error occurred when calling GET %v ", err)
+		}
+
+		log.Printf("Response is received from server "+
+			"\nResponse Code : %d , \nResponse Message : %s \n", response.ResponseCode, response.Message)
+	}
+
+	log.Printf("Doing DELETE Operations 5 times... \n")
+
+	for i := 0; i < 5; i++ {
+		checkForConnection(connection)
+		key := "Key" + strconv.FormatInt(int64(i), 10)
+		response, err := client.DELETE(context.Background(), &proto.GetAndDeleteRequest{Key: key})
+
+		if err != nil {
+			log.Fatalf("Error occurred when calling GET %v ", err)
+		}
+
+		log.Printf("Response is received from server "+
+			"\nResponse Code : %d  \nResponse Message : %s \n", response.ResponseCode, response.Message)
+	}
+
+	log.Println()
+	log.Printf("Pre-Operations are done.... \n")
+
 	// Call the user input handler
 	UserInputHandler(client, connection)
-
 }
 
 //UserInputHandler for handling the user input values.
@@ -52,10 +103,10 @@ func UserInputHandler(client proto.KeyValueStoreServiceClient, connection *grpc.
 		case "PUT":
 			{
 				fmt.Println("Please enter a Key:")
-				key, _:= reader.ReadString('\n')
+				key, _ := reader.ReadString('\n')
 
 				fmt.Println("Please enter a Value")
-				value, _:= reader.ReadString('\n')
+				value, _ := reader.ReadString('\n')
 
 				checkForConnection(connection)
 				response, err := client.PUT(context.Background(), &proto.PutRequest{Key: format(key), Value: format(value)})
@@ -70,7 +121,7 @@ func UserInputHandler(client proto.KeyValueStoreServiceClient, connection *grpc.
 		case "GET":
 			{
 				fmt.Println("Please enter the Key:")
-				key, _:= reader.ReadString('\n')
+				key, _ := reader.ReadString('\n')
 
 				checkForConnection(connection)
 				response, err := client.GET(context.Background(), &proto.GetAndDeleteRequest{Key: format(key)})
@@ -85,8 +136,9 @@ func UserInputHandler(client proto.KeyValueStoreServiceClient, connection *grpc.
 		case "DELETE":
 			{
 				fmt.Println("Please enter the Key:")
-				key, _:= reader.ReadString('\n')
+				key, _ := reader.ReadString('\n')
 
+				checkForConnection(connection)
 				response, err := client.DELETE(context.Background(), &proto.GetAndDeleteRequest{Key: format(key)})
 
 				if err != nil {
